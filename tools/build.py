@@ -11,7 +11,7 @@ BASE='https://parafiajaszkotle.pl'
 def load(name): return json.loads((ROOT/'data'/f'{name}.json').read_text())
 def esc(s): return html.escape(str(s),quote=True)
 def text(s): return BeautifulSoup(s,'html.parser').get_text(' ',strip=True)
-POSTS=sorted(load('posts'),key=lambda x:(x['date'],x['id']),reverse=True)
+POSTS=sorted(load('posts'),key=lambda x:(bool(x.get('sticky')),x['date'],x['id']),reverse=True)
 PAGES=load('pages'); CATS=load('categories'); MEDIA={x['id']:x for x in load('media')}
 ASSETS=load('asset-manifest'); GALLERIES=load('galleries')
 try: GALLERY_ALIASES=load('gallery-aliases')
@@ -89,7 +89,7 @@ def is_icon_asset(path):
  if '/ikony/' in p or p.startswith('assets/img/ikony/'): return True
  # fallback: znane ikony po nazwie pliku
  name=p.rsplit('/',1)[-1].lower()
- icon_names={'news.png','intencje.png','bible.png','gallery.png','schedule.png','hiking_9241479.png','funeral.png','cemetery.png','bus.png','priest.png','preaching_4794074.png','warning.png','zakat.png','three-wise-men.png','pray_10291961.png','jesus_3697178.png','cross.png','drums.png','polska_na_skale.png','reading_7242466.png','learning_12251733.png','calendar_1581943.png','ascension.png'}
+ icon_names={'news.png','intencje.png','bible.png','gallery.png','schedule.png','hiking_9241479.png','funeral.png','cemetery.png','bus.png','priest.png','preaching_4794074.png','warning.png','zakat.png','three-wise-men.png','pray_10291961.png','jesus_3697178.png','cross.png','drums.png','polska_na_skale.png','polska_kontur.png','reading_7242466.png','learning_12251733.png','calendar_1581943.png','ascension.png'}
  return name in icon_names
 
 def strip_duplicate_icon(html_str, icon_path):

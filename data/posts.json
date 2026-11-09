@@ -34565,5 +34565,44 @@
     }
    ]
   }
+ },
+ {
+  "id": 1379,
+  "date": "2026-11-09T11:45:00",
+  "date_gmt": "2026-11-09T10:45:00",
+  "guid": {
+   "rendered": "https://parafiajaszkotle.pl/?p=1379"
+  },
+  "modified": "2026-11-09T11:45:00",
+  "modified_gmt": "2026-11-09T10:45:00",
+  "slug": "narodowe-swieto-niepodleglosci-2026",
+  "status": "publish",
+  "type": "post",
+  "link": "https://parafiajaszkotle.pl/?p=1379",
+  "title": {
+   "rendered": "Narodowe Święto Niepodległości – 11 listopada"
+  },
+  "content": {
+   "rendered": "<p><strong>11 listopada 2026 (środa)</strong> obchodzimy <strong>Narodowe Święto Niepodległości</strong> – 108. rocznicę odzyskania przez Polskę niepodległości.</p>\n\n<h2>Kiedy?</h2>\n<p>Święto przypada co roku 11 listopada. W tym roku wypada w środę. Jest to dzień ustawowo wolny od pracy.</p>\n\n<h2>Dlaczego właśnie 11 listopada?</h2>\n<p>Przez 123 lata, od III rozbioru w 1795 roku, Polski nie było na mapie Europy – jej ziemie podzieliły między siebie Rosja, Prusy i Austria. Mimo to Polacy nie przestali być narodem: zachowali język, kulturę i wiarę, a Kościół przez cały czas zaborów był dla nich ostoją polskości.</p>\n<p>Jesienią 1918 roku, pod koniec I wojny światowej, państwa zaborcze były pokonane lub pogrążone w rewolucji. 10 listopada 1918 roku do Warszawy powrócił z więzienia w Magdeburgu Józef Piłsudski, a 11 listopada – w dniu podpisania rozejmu kończącego wojnę – Rada Regencyjna przekazała mu dowództwo nad wojskiem polskim. Ten dzień uznajemy za symboliczny początek odrodzonej Rzeczypospolitej.</p>\n<p>Święto ustanowiono w 1937 roku. W czasach PRL było zakazane, a przywrócono je w 1989 roku.</p>\n\n<h2>Po co świętujemy?</h2>\n<p>To dzień wdzięczności – Panu Bogu za dar wolnej Ojczyzny oraz tym, którzy o nią walczyli i za nią oddali życie. To także okazja, by przypomnieć sobie, że wolności nie otrzymuje się raz na zawsze: trzeba o nią dbać przez uczciwą pracę, troskę o rodzinę, wspólnotę i dobro wspólne.</p>\n<p>Jak przeżyć ten dzień?</p>\n<ul>\n<li>Uczestnicząc we Mszy Świętej w intencji Ojczyzny.</li>\n<li>Wywieszając flagę narodową na domu.</li>\n<li>Odwiedzając groby i miejsca pamięci żołnierzy i bohaterów.</li>\n<li>Opowiadając dzieciom i wnukom o historii Polski i naszej rodziny.</li>\n</ul>\n\n<h2>W naszej parafii</h2>\n<ul>\n<li><strong>Wtorek, 10 listopada, godz. 18:00</strong> (Jaszkotle) – Msza Święta w intencji naszej Ojczyzny.</li>\n<li><strong>Środa, 11 listopada, godz. 18:00</strong> (Jaszkotle) – Msza Święta, a po niej o godz. 18:30 wypominki.</li>\n</ul>\n<p>Szczegóły w <a href=\"https://parafiajaszkotle.pl/?p=1377\">intencjach mszalnych</a> i <a href=\"https://parafiajaszkotle.pl/?p=1378\">ogłoszeniach parafialnych</a> na ten tydzień.</p>\n\n<p><em>„Bóg, który przez tak liczne wieki otaczał Polskę blaskiem potęgi i chwały… Przed Twe ołtarze zanosim błaganie: Ojczyznę wolną pobłogosław, Panie!”</em></p>\n",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>11 listopada obchodzimy 108. rocznicę odzyskania przez Polskę niepodległości. Kiedy, dlaczego i po co świętujemy.</p>\n",
+   "protected": false
+  },
+  "author": 1,
+  "featured_media": 9479,
+  "comment_status": "closed",
+  "ping_status": "closed",
+  "sticky": true,
+  "template": "",
+  "format": "standard",
+  "meta": {},
+  "categories": [
+   1
+  ],
+  "tags": [],
+  "class_list": [],
+  "_links": {}
  }
 ]
