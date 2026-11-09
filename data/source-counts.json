@@ -1,0 +1,18 @@
+{
+  "posts": {
+    "downloaded": 273,
+    "api_total": 273
+  },
+  "pages": {
+    "downloaded": 9,
+    "api_total": 9
+  },
+  "categories": {
+    "downloaded": 5,
+    "api_total": 5
+  },
+  "media": {
+    "downloaded": 91,
+    "api_total": 91
+  }
+}

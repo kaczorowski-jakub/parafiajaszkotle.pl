@@ -1,0 +1,30 @@
+# Kopie zapasowe starego WordPressa (zawierają hasła do bazy!)
+\!backup/
+backup/
+*.sql
+*.sql.gz
+wp-config.php
+
+# Archiwa i pliki tymczasowe synchronizacji
+*.tar.gz
+*.zip
+.x.*
+*.part*
+
+# Zdjęcia/skany robocze (np. kartki z ogłoszeniami)
+IMG_*.jpg
+skany/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Systemowe i edytory
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~

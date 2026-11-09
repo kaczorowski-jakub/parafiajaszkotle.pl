@@ -1,0 +1,4 @@
+Posty: 273/273; podstrony: 9/9; kategorie: 5
+Sprawdzono lokalnych odnośników/zasobów: 12032; błędy: 0
+Zewnętrzne pliki obrazów/skryptów/stylów: 0
+Weryfikacja zakończona powodzeniem.

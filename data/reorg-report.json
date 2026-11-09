@@ -1,0 +1,52 @@
+{
+  "moved": 202,
+  "by_dir": {
+    "assets/img/galeria/kosciol": 18,
+    "assets/img/wpisy/2026": 65,
+    "assets/img/galeria/remont-oltarza": 14,
+    "assets/img/wpisy/2025": 9,
+    "assets/img/logo": 23,
+    "assets/img/wpisy/2024": 7,
+    "assets/img/galeria/remont-konfesjonalu": 3,
+    "assets/img/galeria/wszystkich-swietych-2026": 8,
+    "assets/img/ikony": 23,
+    "assets/dokumenty": 5,
+    "assets/img/galeria/remont-oltarza/thumbs": 14,
+    "assets/img/wspolnoty": 2,
+    "assets/img/galeria/wszystkich-swietych-2026/thumbs": 8,
+    "assets/img/galeria/remont-konfesjonalu/thumbs": 3
+  },
+  "mapping_sample": [
+    [
+      "assets/media/015549c190fe-inside_1.jpg",
+      "assets/img/galeria/kosciol/inside_1.jpg"
+    ],
+    [
+      "assets/media/0158112d2dfb-20240622_122520-2048x1536.jpg",
+      "assets/img/wpisy/2026/20240622_122520-2048x1536.jpg"
+    ],
+    [
+      "assets/media/01f7618549ba-kosciol-3-768x576.jpg",
+      "assets/img/galeria/kosciol/kosciol-3-768x576.jpg"
+    ],
+    [
+      "assets/media/021c06478479-20250416_112759-scaled.jpg",
+      "assets/img/galeria/remont-oltarza/20250416_112759-scaled.jpg"
+    ],
+    [
+      "assets/media/0243513803c6-IMG-20250121-WA0005-724x1024.jpg",
+      "assets/img/wpisy/2025/img-20250121-wa0005-724x1024.jpg"
+    ]
+  ],
+  "wspolnoty": [
+    "assets/img/wspolnoty/ojciec-pio.jpg",
+    "assets/img/wspolnoty/zywy-rozaniec.jpg"
+  ],
+  "dokumenty": [
+    "assets/dokumenty/60rocznicaoredzie.pdf",
+    "assets/dokumenty/arytul-oltarz.pdf",
+    "assets/dokumenty/artykul.docx",
+    "assets/dokumenty/standardy_ochrony_maloletnich.pdf",
+    "assets/dokumenty/regulamin-cmentarza-parafilanego-w-jaszkotlu-01.02.21.pdf"
+  ]
+}
