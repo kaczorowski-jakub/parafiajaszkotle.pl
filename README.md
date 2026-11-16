@@ -90,3 +90,8 @@ Repozytorium Git jest zainicjalizowane lokalnie; nie wysłano go na żaden serwe
 - Jeden rekord biblioteki mediów (`wp-content/uploads/2025/09/kep-log.htm`) zwraca dokument HTML, nie obraz/załącznik graficzny. Nie skopiowano go jako obrazu. **Nie jest używany w treści żadnego z 273 postów ani 9 podstron**, więc nie powoduje braku w ich treści. Szczegóły: `data/asset-errors.json`.
 - Nie przenoszono zaplecza, wtyczek ani komentarzy; zakres migracji obejmuje wszystkie publiczne posty i podstrony dostępne w API.
 - Dane kontaktowe, porządek nabożeństw i opłaty na cmentarzu przeniesiono z materiałów źródłowych bez aktualizowania ich merytorycznej treści; przed publikacją warto je potwierdzić w parafii.
+
+## Archiwum wpisów
+
+Na stronę trafiają tylko wpisy z bieżącego roku oraz wpisy z kategorii Kuria i Dokumenty (ustawienie `ARCHIVE_BEFORE_YEAR` i `KEEP_CATEGORIES` w `tools/build.py`).
+Starsze wpisy zostają w `data/posts.json`, a ich gotowe strony HTML leżą w `archiwum/posts/`. Katalogu `archiwum/` nie wrzucamy na serwer.

@@ -40,6 +40,12 @@ def clean_slug(x):
  return s or str(x['id'])
 POSTS_ASC=sorted(POSTS,key=lambda x:(x['date'],x['id']))
 POST_NUM={p['id']:i for i,p in enumerate(POSTS_ASC,1)}
+# Archiwum: wpisy sprzed bieżącego roku zostają w data/posts.json (i w archiwum/posts/), ale nie trafiają na stronę.
+ARCHIVE_BEFORE_YEAR=datetime.now().year
+KEEP_CATEGORIES={9,10}  # Kuria i Dokumenty zostają zawsze (np. standardy ochrony małoletnich)
+def _visible(x): return int(x['date'][:4])>=ARCHIVE_BEFORE_YEAR or bool(KEEP_CATEGORIES & set(x.get('categories',[])))
+ARCHIVED=[x for x in POSTS if not _visible(x)]
+POSTS=[x for x in POSTS if _visible(x)]
 def post_path(x):return f"posts/{POST_NUM[x['id']]:04d}-{clean_slug(x)}.html"
 def page_path(x):return f"pages/{x['id']}-{clean_slug(x)}.html"
 PATHS={**{x['id']:post_path(x) for x in POSTS},**{x['id']:page_path(x) for x in PAGES}}
