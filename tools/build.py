@@ -38,7 +38,8 @@ def clean_slug(x):
   s=re.sub(r'-{2,}','-',s)
   s=re.sub(r'[^a-zA-Z0-9_-]','-',s).strip('-').lower()
  return s or str(x['id'])
-POSTS_ASC=sorted(POSTS,key=lambda x:(x['date'],x['id']))
+SLOWO_CAT=11  # Słowo na niedzielę: zawsze jeden wpis, stała nazwa pliku
+POSTS_ASC=sorted([x for x in POSTS if SLOWO_CAT not in x.get('categories',[])],key=lambda x:(x['date'],x['id']))
 POST_NUM={p['id']:i for i,p in enumerate(POSTS_ASC,1)}
 # Archiwum: wpisy sprzed bieżącego roku zostają w data/posts.json (i w archiwum/posts/), ale nie trafiają na stronę.
 ARCHIVE_BEFORE_YEAR=datetime.now().year
@@ -46,7 +47,9 @@ KEEP_CATEGORIES={9,10}  # Kuria i Dokumenty zostają zawsze (np. standardy ochro
 def _visible(x): return int(x['date'][:4])>=ARCHIVE_BEFORE_YEAR or bool(KEEP_CATEGORIES & set(x.get('categories',[])))
 ARCHIVED=[x for x in POSTS if not _visible(x)]
 POSTS=[x for x in POSTS if _visible(x)]
-def post_path(x):return f"posts/{POST_NUM[x['id']]:04d}-{clean_slug(x)}.html"
+def post_path(x):
+ if SLOWO_CAT in x.get('categories',[]): return "posts/slowo-na-niedziele.html"
+ return f"posts/{POST_NUM[x['id']]:04d}-{clean_slug(x)}.html"
 def page_path(x):return f"pages/{x['id']}-{clean_slug(x)}.html"
 PATHS={**{x['id']:post_path(x) for x in POSTS},**{x['id']:page_path(x) for x in PAGES}}
 SKIP_PAGES={1064}
@@ -156,7 +159,13 @@ def content(item,prefix):
     val=tag[attr]
     tag[attr]=rewrite(val,prefix) if not val.lstrip().lower().startswith(('javascript:','vbscript:')) else '#'
   if tag.get('srcset'):
-   tag['srcset']=', '.join(' '.join([rewrite(part.strip().split()[0],prefix)]+part.strip().split()[1:]) for part in tag['srcset'].split(',') if part.strip())
+   # warianty z dawnego katalogu _nieuzywane (miniatury WP) pomijamy, zostaja tylko istniejace pliki
+   _ss=[' '.join([rewrite(part.strip().split()[0],prefix)]+part.strip().split()[1:]) for part in tag['srcset'].split(',') if part.strip()]
+   _ss=[x for x in _ss if '_nieuzywane' not in x]
+   if _ss: tag['srcset']=', '.join(_ss)
+   else:
+    del tag['srcset']
+    if tag.get('sizes'): del tag['sizes']
   if tag.name=='img':tag['loading']='lazy';tag['decoding']='async'
   if tag.name=='iframe':
    tag['loading']='lazy';tag['title']=tag.get('title','Materiał wideo');tag['referrerpolicy']='strict-origin-when-cross-origin'
@@ -191,7 +200,7 @@ def content(item,prefix):
    if not src: continue
    full=rewrite(src,prefix)
    if im.get('srcset'):
-    parts=[p.strip().split()[0] for p in im['srcset'].split(',') if p.strip()]
+    parts=[p.strip().split()[0] for p in im['srcset'].split(',') if p.strip() and '_nieuzywane' not in rewrite(p.strip().split()[0],prefix)]
     if parts: full=rewrite(parts[-1],prefix)
    n=len(church_imgs)+1
    church_imgs.append(f'<a class="gallery-photo" href="{esc(full)}" data-lightbox="true"><img loading="lazy" src="{esc(full)}" alt="Kościół w Jaszkotlu — zdjęcie {n}" width="240" height="160"></a>')

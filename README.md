@@ -95,3 +95,7 @@ Repozytorium Git jest zainicjalizowane lokalnie; nie wysłano go na żaden serwe
 
 Na stronę trafiają tylko wpisy z bieżącego roku oraz wpisy z kategorii Kuria i Dokumenty (ustawienie `ARCHIVE_BEFORE_YEAR` i `KEEP_CATEGORIES` w `tools/build.py`).
 Starsze wpisy zostają w `data/posts.json`, a ich gotowe strony HTML leżą w `archiwum/posts/`. Katalogu `archiwum/` nie wrzucamy na serwer.
+
+## Słowo na niedzielę
+
+Wpis z kategorii „Słowo na niedzielę” (id 11) zawsze ma stały plik `posts/slowo-na-niedziele.html` i nie dostaje numeru. Co tydzień poprzedni wpis jest podmieniany, więc na serwerze wystarczy nadpisać ten jeden plik.
