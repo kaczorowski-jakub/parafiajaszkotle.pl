@@ -26,21 +26,26 @@ Można też otworzyć `index.html` bezpośrednio w przeglądarce — odnośniki 
 ## Struktura
 
 ```text
-index.html                 strona główna; kompletna lista wpisów
-posts/                     273 osobne strony wpisów
-pages/                     9 podstron informacyjnych i galerii
-categories/                5 archiwów kategorii
+index.html                 strona główna
+posts/                     bieżące wpisy (angielskie slugi, numer NNNN- zachowany)
+pages/                     podstrony informacyjne i galerie
+categories/                archiwa kategorii
+archive/                   zarchiwizowane wpisy i ich obrazki (nie wrzucamy na serwer)
 assets/style.css           wygląd i układ na telefonach
 assets/site.js             wyszukiwanie, paginacja, podgląd zdjęć
-assets/legacy.js            mapa dawnych adresów WordPressa
-assets/img/                 obrazy (ikony/, galeria/, logo/, wspolnoty/, wpisy/)
-assets/dokumenty/          PDF i inne załączniki
- data/                     dane źródłowe JSON i raporty migracji
- tools/build.py            powtarzalny generator HTML
- tools/download_assets.py  opcjonalne pobieranie zasobów
- tools/verify.py           weryfikacja liczebności i lokalnych odnośników
-.htaccess                  opcjonalne przekierowania Apache/OVH
-sitemap.xml, robots.txt     pliki dla robotów wyszukiwarek
+assets/legacy.js           mapa dawnych adresów WordPressa
+assets/img/main/           stałe grafiki (logo, herby, mapy, logotypy partnerów)
+assets/img/icons/          ikony wpisów
+assets/img/gallery/        galerie zdjęć
+assets/img/communities/    zdjęcia wspólnot
+assets/img/posts/YYYY/     obrazki wpisów tylko z bieżącego roku
+assets/documents/          PDF i inne załączniki
+data/                      dane źródłowe JSON i raporty migracji
+tools/build.py             powtarzalny generator HTML
+tools/download_assets.py   opcjonalne pobieranie zasobów
+tools/verify.py            weryfikacja liczebności i lokalnych odnośników
+.htaccess                  przekierowania Apache/OVH (WordPress i dawne HTML)
+sitemap.xml, robots.txt    pliki dla robotów wyszukiwarek
 ```
 
 ## Jak zmieniać treść tutaj
@@ -65,7 +70,7 @@ python3 tools/build.py
 python3 tools/verify.py
 ```
 
-Zwykły podgląd/wgranie strony **nie wymaga instalowania żadnych bibliotek**. Biblioteki są potrzebne wyłącznie do ponownego generowania i testów. Generator działa bez pobierania treści z WordPressa; dane są już lokalne. Aby ponowić pobieranie obrazów, uruchom osobno `python3 tools/download_assets.py`. Nowe własne obrazy zapisuj w odpowiednim podkatalogu `assets/img/` (np. `ikony/`, `galeria/…`, `wspolnoty/`), a dokumenty w `assets/dokumenty/`.
+Zwykły podgląd/wgranie strony **nie wymaga instalowania żadnych bibliotek**. Biblioteki są potrzebne wyłącznie do ponownego generowania i testów. Generator działa bez pobierania treści z WordPressa; dane są już lokalne. Aby ponowić pobieranie obrazów, uruchom osobno `python3 tools/download_assets.py`. Nowe własne obrazy zapisuj w odpowiednim podkatalogu `assets/img/` (np. `icons/`, `gallery/…`, `communities/`, stałe grafiki w `main/`, obrazki wpisów w `posts/YYYY/`), a dokumenty w `assets/documents/`.
 
 Wygląd edytuj w `assets/style.css`; wspólny nagłówek, stopkę i szablony w `tools/build.py`. Bezpośrednia zmiana wygenerowanego HTML działa, ale **zostanie nadpisana przy następnym generowaniu**. Generator nie usuwa sam starych plików po zmianie slug/usunięciu wpisu — stare ścieżki usuń świadomie, dodając w razie potrzeby przekierowania.
 
@@ -76,11 +81,11 @@ Repozytorium Git jest zainicjalizowane lokalnie; nie wysłano go na żaden serwe
 **Nic nie zostało opublikowane, DNS i obecna strona nie były zmieniane.**
 
 1. Zrób kopię plików WordPressa, bazy danych i dotychczasowego `.htaccess` na OVH.
-2. Najpierw wgraj nową stronę do osobnego katalogu testowego/subdomeny. Serwuj `index.html`, `posts/`, `pages/`, `categories/`, `assets/`, `robots.txt`, `sitemap.xml` i opcjonalnie `.htaccess`. `data/`, `tools/`, `.git/` i środowiska `.venv/` nie są potrzebne na publicznym hostingu.
+2. Najpierw wgraj nową stronę do osobnego katalogu testowego/subdomeny. Serwuj `index.html`, `posts/`, `pages/`, `categories/`, `assets/`, `robots.txt`, `sitemap.xml` i opcjonalnie `.htaccess`. Katalogów `archive/`, `data/`, `tools/`, `.git/` i środowiska `.venv/` nie wrzucamy na publiczny hosting.
 3. Na istniejącym hostingu OVH zwykle wystarczy zmiana katalogu WWW domeny lub podmiana plików po akceptacji — DNS może pozostać bez zmian. Nie nadpisuj produkcyjnego WordPressa bez sprawdzenia kopii i wersji testowej.
 4. Jeśli wybierzesz inny hosting statyczny, podepnij domenę zgodnie z instrukcją tego hostingu i dopiero potem ustaw odpowiednie rekordy A/AAAA lub CNAME w OVH. Zachowaj rekordy pocztowe MX/SPF/DKIM/DMARC.
 5. Włącz certyfikat HTTPS dla obu wariantów domeny i wybierz jeden adres główny. Dotychczasowa strona to `parafiajaszkotle.pl`; jeśli nowy adres ma być **jaszkotle.pl**, zmień `BASE` w `tools/build.py`, wygeneruj pliki ponownie i skonfiguruj przekierowanie drugiej domeny.
-6. `.htaccess` zawiera przekierowania dawnych adresów `?p=`, `?page_id=` i `?cat=` na nowe HTML (Apache z mod_rewrite). Na hostingu bez Apache mapa w `assets/legacy.js` obsługuje te parametry po stronie przeglądarki. Przed produkcją sprawdź przekierowania na wybranym hostingu — inne dawne formaty URL mogą wymagać dodatkowych reguł.
+6. `.htaccess` zawiera przekierowania dawnych adresów `?p=`, `?page_id=` i `?cat=` oraz dawnych statycznych ścieżek HTML (np. `posts/0280-ogloszenia-….html`) na nowe angielskie nazwy plików. Mapę utrzymuje generator w `data/redirects.json`. Na hostingu bez Apache mapa w `assets/legacy.js` obsługuje parametry WordPressa po stronie przeglądarki.
 
 ## Ograniczenia / świadome różnice
 
@@ -91,11 +96,21 @@ Repozytorium Git jest zainicjalizowane lokalnie; nie wysłano go na żaden serwe
 - Nie przenoszono zaplecza, wtyczek ani komentarzy; zakres migracji obejmuje wszystkie publiczne posty i podstrony dostępne w API.
 - Dane kontaktowe, porządek nabożeństw i opłaty na cmentarzu przeniesiono z materiałów źródłowych bez aktualizowania ich merytorycznej treści; przed publikacją warto je potwierdzić w parafii.
 
-## Archiwum wpisów
+## Nazwy plików po angielsku
+
+Nazwy plików, katalogów i adresów podstron są po angielsku (kebab-case, ASCII). Treść strony, tytuły i menu zostają po polsku. Numeracja wpisów (`NNNN-`) jest zachowana.
+
+Tygodniowe slugi generator tłumaczy automatycznie: `ogloszenia-…` → `announcements-…`, `intencje-…` → `mass-intentions-…`, `koleda-…` → `christmas-visits-…`. Pozostałe wpisy i podstrony mają mapę w `data/slugs-en.json`. Kategorie: `news`, `announcements`, `mass-intentions`, `curia`, `documents`, `sunday-word`.
+
+## Archiwum wpisów i obrazków
 
 Na stronę trafiają tylko wpisy z bieżącego roku oraz wpisy z kategorii Kuria i Dokumenty (ustawienie `ARCHIVE_BEFORE_YEAR` i `KEEP_CATEGORIES` w `tools/build.py`).
-Starsze wpisy zostają w `data/posts.json`, a ich gotowe strony HTML leżą w `archiwum/posts/`. Katalogu `archiwum/` nie wrzucamy na serwer.
+Starsze wpisy zostają w `data/posts.json`, a ich gotowe strony HTML leżą w `archive/posts/`. Katalogu `archive/` nie wrzucamy na serwer.
+
+W `assets/img/posts/` ma być wyłącznie katalog bieżącego roku. Przy archiwizacji (na początku nowego roku, przy kolejnym `python3 tools/build.py`) generator sam przenosi obrazki ze starych lat:
+- jeśli żywa strona ich nadal potrzebuje (np. mapa cmentarza, logo KEP) — do `assets/img/main/`;
+- w przeciwnym razie — do `archive/img/posts/<rok>/`.
 
 ## Słowo na niedzielę
 
-Wpis z kategorii „Słowo na niedzielę” (id 11) zawsze ma stały plik `posts/slowo-na-niedziele.html` i nie dostaje numeru. Co tydzień poprzedni wpis jest podmieniany, więc na serwerze wystarczy nadpisać ten jeden plik.
+Wpis z kategorii „Słowo na niedzielę” (id 11) zawsze ma stały plik `posts/sunday-word.html` i nie dostaje numeru. Co tydzień poprzedni wpis jest podmieniany, więc na serwerze wystarczy nadpisać ten jeden plik.

@@ -1,14 +1,17 @@
 [
   {
     "name": "Niezbędnik katolika",
-    "url": "https://niezbednik.niedziela.pl/"
+    "url": "https://niezbednik.niedziela.pl/",
+    "icon": "assets/img/main/catholic-handbook.png"
   },
   {
     "name": "Wojownicy Maryi",
-    "url": "https://wojownicymaryi.com/"
+    "url": "https://wojownicymaryi.com/",
+    "icon": "assets/img/main/warriors-of-mary.png"
   },
   {
     "name": "Orla Straż",
-    "url": "https://www.orlastraz.org/"
+    "url": "https://www.orlastraz.org/",
+    "icon": "assets/img/main/eagle-guard.png"
   }
 ]

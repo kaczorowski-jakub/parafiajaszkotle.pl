@@ -9,19 +9,19 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://parafiajaszkotle.pl'
 
 ICONS = {
-    'news.png','intencje.png','bible.png','gallery.png','schedule.png',
+    'news.png','intencje.png','mass-intentions.png','bible.png','gallery.png','schedule.png',
     'hiking_9241479.png','funeral.png','cemetery.png','bus.png','priest.png',
     'preaching_4794074.png','warning.png','zakat.png','three-wise-men.png',
     'pray_10291961.png','jesus_3697178.png','cross.png','drums.png',
     'reading_7242466.png','learning_12251733.png','calendar_1581943.png',
-    'ascension.png','polska_na_skale.png',
+    'ascension.png','polska_na_skale.png','poland-on-the-rock.png','poland-outline.png',
 }
 LOGO_EXACT = {
-    'cropped-main-1.png','cropped-church-1-32x32.jpg','main.png',
-    'arch-wro.png','kep-logo.jpg','kep_logo.png','logosamorzel100px.png',
+    'cropped-main-1.png','cropped-church-1-32x32.jpg','main.png','site-logo.png','site-favicon.jpg',
+    'arch-wro.png','kep-logo.jpg','kep_logo.png','logosamorzel100px.png','eagle-guard-logo.png','catholic-handbook.png','warriors-of-mary.png','eagle-guard.png',
 }
-LOGO_PREFIXES = ('herb_archidiecezji', 'cropped-church', 'cropped-cropped-church', 'cropped-jaszkotle', 'polski-lad-logo')
-KOSCIOL_PREFIXES = ('kosciol-', 'jaszkotle_', 'jaszkotle-', 'inside_1', 'church.')
+LOGO_PREFIXES = ('herb_archidiecezji', 'wroclaw-archdiocese-arms', 'cropped-church', 'cropped-cropped-church', 'cropped-jaszkotle', 'polski-lad-logo', 'polish-deal-logo')
+CHURCH_PREFIXES = ('kosciol-', 'church-', 'jaszkotle_', 'jaszkotle-', 'inside_1', 'church.')
 DOC_EXT = {'.pdf', '.docx', '.doc', '.odt', '.xls', '.xlsx', '.ppt', '.pptx'}
 TR = str.maketrans({'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z','Ą':'a','Ć':'c','Ę':'e','Ł':'l','Ń':'n','Ó':'o','Ś':'s','Ź':'z','Ż':'z'})
 
@@ -31,6 +31,17 @@ def clean_name(name: str) -> str:
     name = re.sub(r'[^a-z0-9._\-]+', '-', name)
     name = re.sub(r'-{2,}', '-', name).strip('-')
     return name or 'plik'
+
+
+GALLERY_DIRS = {
+    'wszystkich-swietych-2026': 'all-saints-2026',
+    'remont-konfesjonalu': 'confessional-renovation',
+    'remont-oltarza': 'altar-renovation',
+    'kosciol': 'church',
+}
+
+def _gallery_dir(name: str) -> str:
+    return GALLERY_DIRS.get(name, name)
 
 def canonical(url):
     url = url.replace('http://llfzztv.cluster029.hosting.ovh.net', BASE).replace('https://llfzztv.cluster029.hosting.ovh.net', BASE)
@@ -52,21 +63,21 @@ def classify_rel(url: str) -> str:
     if m:
         g = clean_name(m.group(1))
         if m.group(2):
-            return f'assets/img/galeria/{g}/thumbs/{clean_name(m.group(3))}'
-        return f'assets/img/galeria/{g}/{clean_name(m.group(3))}'
+            return f'assets/img/gallery/{_gallery_dir(g)}/thumbs/{clean_name(m.group(3))}'
+        return f'assets/img/gallery/{_gallery_dir(g)}/{clean_name(m.group(3))}'
     orig_l = unquote(path.rsplit('/', 1)[-1]).lower()
     if Path(name).suffix.lower() in DOC_EXT:
-        return f'assets/dokumenty/{name}'
+        return f'assets/documents/{name}'
     if orig_l in ICONS or name in ICONS:
-        return f'assets/img/ikony/{name}'
+        return f'assets/img/icons/{name}'
     if orig_l in LOGO_EXACT or name in LOGO_EXACT or any(orig_l.startswith(p) for p in LOGO_PREFIXES):
-        return f'assets/img/logo/{name}'
-    if any(orig_l.startswith(p) for p in KOSCIOL_PREFIXES) or orig_l == 'church.jpg':
-        return f'assets/img/galeria/kosciol/{name}'
+        return f'assets/img/main/{name}'
+    if any(orig_l.startswith(p) for p in CHURCH_PREFIXES) or orig_l == 'church.jpg':
+        return f'assets/img/gallery/church/{name}'
     ym = re.match(r'^/wp-content/uploads/(\d{4})/\d{2}/', path)
     if ym:
-        return f'assets/img/wpisy/{ym.group(1)}/{name}'
-    return f'assets/img/wpisy/inne/{name}'
+        return f'assets/img/posts/{ym.group(1)}/{name}'
+    return f'assets/img/posts/other/{name}'
 
 def collect():
     urls=set()

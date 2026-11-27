@@ -34772,5 +34772,44 @@
   "class_list": [],
   "_links": {},
   "sticky": false
+ },
+ {
+  "id": 1384,
+  "date": "2026-11-27T19:00:00",
+  "date_gmt": "2026-11-27T19:00:00",
+  "guid": {
+   "rendered": "https://parafiajaszkotle.pl/?p=1384"
+  },
+  "modified": "2026-11-27T19:00:00",
+  "modified_gmt": "2026-11-27T19:00:00",
+  "slug": "rekolekcje-adwentowe-2026",
+  "status": "publish",
+  "type": "post",
+  "link": "https://parafiajaszkotle.pl/?p=1384",
+  "title": {
+   "rendered": "Rekolekcje adwentowe 2026 – 5–8 grudnia"
+  },
+  "content": {
+   "rendered": "<p>Serdecznie zapraszamy na <strong>rekolekcje adwentowe</strong> w naszej parafii, które odbędą się <strong>od 5 do 8 grudnia 2026</strong> w Jaszkotlu i w Sadkowie. Niech ten czas pomoże nam dobrze przygotować serca na przyjście Pana.</p>\n\n<figure class=\"wp-block-image aligncenter size-large\"><a href=\"https://parafiajaszkotle.pl/wp-content/uploads/2026/11/rekolekcje-adwentowe-2026.jpg\"><img src=\"https://parafiajaszkotle.pl/wp-content/uploads/2026/11/rekolekcje-adwentowe-2026.jpg\" alt=\"Plakat: Rekolekcje adwentowe – plan rekolekcji 5–8 grudnia 2026\" width=\"1024\" height=\"1536\"/></a></figure>\n\n<h2>Plan rekolekcji</h2>\n<h3>5 grudnia (sobota)</h3>\n<ul>\n<li><strong>17:00</strong> – Msza św. z nauką (Sadków)</li>\n<li><strong>18:00</strong> – Msza św. z nauką (Jaszkotle) oraz nabożeństwo I soboty miesiąca</li>\n</ul>\n<h3>6 grudnia (niedziela)</h3>\n<ul>\n<li><strong>8:00</strong> – Msza św. z nauką (Jaszkotle)</li>\n<li><strong>9:30</strong> – Msza św. z nauką (Sadków)</li>\n<li><strong>11:30</strong> – Msza św. z nauką (Jaszkotle)</li>\n<li><strong>17:00</strong> – Msza św. z nauką (Jaszkotle) – śpiew poprowadzi chór Smolec Cantans</li>\n</ul>\n<h3>7 grudnia (poniedziałek)</h3>\n<ul>\n<li><strong>16:30</strong> – Msza św. z nauką (Sadków)</li>\n<li><strong>18:00</strong> – Msza św. z nauką (Jaszkotle)</li>\n</ul>\n<h3>8 grudnia (wtorek)</h3>\n<ul>\n<li><strong>12:00–13:00</strong> – Godzina łaski</li>\n<li><strong>16:00–16:30</strong> – spowiedź św. (Sadków)</li>\n<li><strong>16:30</strong> – Msza św. z nauką i błogosławieństwem (Sadków)</li>\n<li><strong>17:15–18:00</strong> – spowiedź św. (Jaszkotle)</li>\n<li><strong>18:00</strong> – Msza św. z nauką i błogosławieństwem (Jaszkotle)</li>\n</ul>\n",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Zapraszamy na rekolekcje adwentowe w Jaszkotlu i Sadkowie od 5 do 8 grudnia 2026. Plan nauk, spowiedzi i Godziny łaski.</p>\n",
+   "protected": false
+  },
+  "author": 1,
+  "featured_media": 336,
+  "comment_status": "closed",
+  "ping_status": "closed",
+  "sticky": true,
+  "template": "",
+  "format": "standard",
+  "meta": {},
+  "categories": [
+   1
+  ],
+  "tags": [],
+  "class_list": [],
+  "_links": {}
  }
 ]
